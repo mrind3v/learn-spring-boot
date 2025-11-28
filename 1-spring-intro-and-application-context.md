@@ -53,89 +53,6 @@ Every Spring module depends on this container.
 
 ---
 
-## The ECOSYSTEM (How each MODULE fits)
-
-#### **Spring MVC** (Web Controller System)
-
-Purpose:
-
-* Handle HTTP requests → routes requests to controllers
-* Provides REST API support
-* Supports templates (Thymeleaf, JSP, etc.)
-
-How it uses Spring Core:
-
-* Controllers are objects *created and managed* by Core
-* Dependencies inside controllers are injected by Core
-* MVC uses AOP for things like transaction boundaries
-
----
-
-#### **Spring Security** (Security System)
-
-Purpose:
-
-* Authentication (login, identity)
-* Authorization (permissions)
-* Filter chains (pre-processing every web request)
-
-How it plugs in:
-
-* It uses Spring Core to inject security services
-* It uses Spring MVC to secure endpoints
-* It uses AOP for method-level security (e.g., `@PreAuthorize`)
-
----
-
-#### **Spring AOP** (Cross-Cutting Logic)
-
-Purpose:
-
-* Add behavior around method calls without modifying code
-
-Examples:
-
-* Logging all method calls
-* Starting/ending transactions
-* Measuring performance
-* Security checks
-
-How it plugs in:
-
-* Works along with Core: wraps managed objects with proxy logic
-* Used internally by many modules (Transactions, Security)
-
----
-
-#### **Spring Data** (Database Access)
-
-Purpose:
-
-* Eliminates boilerplate JDBC code
-* Auto-implements repositories based on interfaces
-* Integrates with JPA/Hibernate
-
-How it fits:
-
-* Uses AOP for transaction management
-* Uses Core to manage repositories and inject dependencies
-* Used commonly with MVC and Security
-
----
-
-#### **Spring Boot (The Glue for All)**
-
-Spring Boot:
-
-* Automatically configures all modules
-* Starts an embedded server
-* Eliminates XML configuration
-* Provides “starter dependencies” that group required libraries
-
-Spring Boot’s job is to make the whole system usable with almost no setup.
-
----
-
 ## Putting It All Together (The Full Picture)
 
 Imagine building a REST API with database access and security:
@@ -185,9 +102,6 @@ Passes through filters again → sent back to client.
 
 ---
 
-Here’s the **cleanest, simplest, intuition-first** explanation of **ApplicationContext** and how it works when a Spring app starts.
-
----
 
 ## What Is **ApplicationContext** in Spring?
 
